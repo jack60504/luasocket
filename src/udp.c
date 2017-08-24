@@ -182,7 +182,8 @@ static int meth_sendto(lua_State *L) {
     memset(&aihint, 0, sizeof(aihint));
     aihint.ai_family = udp->family;
     aihint.ai_socktype = SOCK_DGRAM;
-    aihint.ai_flags = AI_NUMERICHOST | AI_NUMERICSERV;
+    /* aihint.ai_flags = AI_NUMERICHOST | AI_NUMERICSERV; */
+    aihint.ai_flags = AI_NUMERICHOST;
     err = getaddrinfo(ip, port, &aihint, &ai);
 	if (err) {
         lua_pushnil(L);

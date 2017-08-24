@@ -76,7 +76,7 @@ static UC b64unbase[256];
 /*-------------------------------------------------------------------------*\
 * Initializes module
 \*-------------------------------------------------------------------------*/
-MIME_API int luaopen_mime_core(lua_State *L)
+MIME_API int luaopen_mime_cc(lua_State *L)
 {
     lua_newtable(L);
     luaL_setfuncs(L, func, 0);

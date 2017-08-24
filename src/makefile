@@ -164,15 +164,17 @@ SOCKET_macosx=usocket.o
 # for Linux
 SO_linux=so
 O_linux=o
-CC_linux=gcc
+CC_linux=mipsel-linux-gcc
+# CC_linux=gcc
 DEF_linux=-DLUASOCKET_$(DEBUG) \
 	-DLUASOCKET_API='__attribute__((visibility("default")))' \
 	-DUNIX_API='__attribute__((visibility("default")))' \
 	-DMIME_API='__attribute__((visibility("default")))'
 CFLAGS_linux= -I$(LUAINC) $(DEF) -Wall -Wshadow -Wextra \
-	-Wimplicit -O2 -ggdb3 -fpic -fvisibility=hidden
+	-Wimplicit -O2 -ggdb3 -fpic 
+# -fvisibility=hidden
 LDFLAGS_linux=-O -shared -fpic -o 
-LD_linux=gcc
+LD_linux=mipsel-linux-gcc
 SOCKET_linux=usocket.o
 
 #------
@@ -281,21 +283,19 @@ SOCKET_OBJS= \
 	buffer.$(O) \
 	io.$(O) \
 	auxiliar.$(O) \
-	compat.$(O) \
 	options.$(O) \
 	inet.$(O) \
 	$(SOCKET) \
 	except.$(O) \
 	select.$(O) \
 	tcp.$(O) \
-	udp.$(O)
+	udp.$(O) \
 
 #------
 # Modules belonging mime-core
 #
 MIME_OBJS= \
-	mime.$(O) \
-	compat.$(O)
+	mime.$(O) 
 
 #------
 # Modules belonging unix (local domain sockets)
